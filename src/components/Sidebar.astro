@@ -1,0 +1,83 @@
+---
+interface PageLink {
+  slug: string;
+  title: string;
+}
+
+const pages = import.meta.glob<{ frontmatter: { title?: string } }>('/src/content/*.mdx', { eager: true });
+
+const links: PageLink[] = Object.entries(pages)
+  .map(([path, mod]) => {
+    const slug = path
+      .replace('/src/content/', '')
+      .replace('.mdx', '');
+
+    return {
+      slug,
+      title: mod.frontmatter?.title ?? slug,
+    };
+  })
+  .filter((link) => link.slug.toLowerCase() !== 'index') // <-- Ignore index.mdx
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<aside class="w-64 max-w-full hidden fixed pb-24 lg:block h-screen overflow-y-auto border-r border-neutral-200 dark:border-neutral-800">
+
+  <script type="module" is:inline>
+    const searchInput = document.getElementById('sidebar-search');
+    const listItems = document.querySelectorAll('.sidebar-link');
+    const noResults = document.getElementById('no-results');
+
+    if (searchInput instanceof HTMLInputElement) {
+      const updateVisibility = () => {
+        const query = searchInput.value.toLowerCase();
+        let visibleCount = 0;
+
+        listItems.forEach(item => {
+          const text = item.getAttribute('data-title')?.toLowerCase() ?? '';
+          const isVisible = text.includes(query);
+          item.classList.toggle('hidden', !isVisible);
+          if (isVisible) visibleCount++;
+        });
+
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+      };
+
+      searchInput.addEventListener('input', updateVisibility);
+
+      // Initialize state on load
+      updateVisibility();
+    }
+  </script>
+
+  <!-- Champ de recherche -->
+  <input
+    id="sidebar-search"
+    type="text"
+    placeholder="Search..."
+    class="border-b border-neutral-300 dark:border-neutral-800 ring-0 outline:ring-0 p-4 w-full"
+  />
+
+  <!-- Liste des liens -->
+  <div class="grid">
+    {links.map((link) => (
+      <a
+        href={`/${link.slug}`}
+        data-title={link.title}
+        class="sidebar-link block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition whitespace-nowrap truncate"
+      >
+        {link.title}
+      </a>
+    ))}
+  </div>
+
+  <!-- Message "No results" -->
+  <div
+    id="no-results"
+    class="hidden text-neutral-500 dark:text-neutral-400 text-sm p-4"
+  >
+    No results.
+  </div>
+</aside>
