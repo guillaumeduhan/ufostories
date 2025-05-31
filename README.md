@@ -1,48 +1,135 @@
-# Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
-```
+# 🚀 Astro SEO Directory Template 2025
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+A lightning-fast, SEO-optimized starter built with Astro and Tailwind CSS. Ideal for creating directories, job boards, or resource collections without a CMS, using Markdown or MDX content.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ✨ Features
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- ⚡ Static Site Generation (SSG) for optimal performance
+- 🔍 Built-in SEO: meta tags, Open Graph, clean URLs
+- 📄 MDX & Markdown support with frontmatter
+- 🎨 Responsive design with Tailwind CSS and dark mode
+- 🔎 Instant search bar in the sidebar
+- 🧱 Dynamic routing with `[slug].astro`
+- 🚫 Zero client-side JavaScript by default
 
-## 🚀 Project Structure
+## 📁 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
+```plaintext
 ├── public/
-│   └── favicon.svg
 ├── src/
+│   ├── components/
+│   │   ├── DarkMode.astro
+│   │   └── Header.astro
+│   ├── content/
+│   │   └── *.mdx
 │   ├── layouts/
 │   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   │   ├── index.astro
+│   │   └── [slug].astro
+│   └── styles/
+│       └── global.css
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🚀 Getting Started
 
-## 🧞 Commands
+### 1. Clone the Repository
 
-All commands are run from the root of the project, from a terminal:
+```bash
+git clone https://github.com/your-username/astro-seo-directory-template.git
+cd astro-seo-directory-template
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### 2. Install Dependencies
 
-## 👀 Want to learn more?
+```bash
+npm install
+# or
+pnpm install
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 3. Start the Development Server
+
+```bash
+npm run dev
+# or
+pnpm dev
+```
+
+The site will be available at [http://localhost:4321/](http://localhost:4321/).
+
+## ✍️ Adding Content
+
+Add your `.mdx` or `.md` files to the `src/content/` directory. Each file becomes a page accessible via its slug.
+
+### Frontmatter Example
+
+```yaml
+---
+title: "Entry Name"
+description: "Brief description for SEO and social sharing"
+tags: ["tech", "startup"]
+image: "/images/example.png"
+---
+```
+
+> 📝 **Note**: The `index.mdx` file is ignored in the sidebar.
+
+## 🔍 Sidebar and Search
+
+The sidebar automatically lists all `.mdx` files (excluding `index.mdx`). A search field allows real-time filtering of results.
+
+## 🎨 Customization
+
+- Modify `src/styles/global.css` to adjust global styles.
+- Adjust the layout via `src/layouts/Layout.astro`.
+- Customize components in `src/components/`.
+
+## 📦 Building for Production
+
+```bash
+npm run build
+# or
+pnpm build
+```
+
+The static site will be generated in the `dist/` directory.
+
+## 🚀 Deployment
+
+Deploy the `dist/` directory to your preferred platform:
+
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+- [GitHub Pages](https://pages.github.com/)
+- [Cloudflare Pages](https://pages.cloudflare.com/)
+
+## ❓ FAQ
+
+### Why choose Astro for a directory?
+
+Astro offers exceptional performance with static rendering by default, making it ideal for SEO and fast loading times.
+
+### Do I need a database or CMS?
+
+No. Content is managed via `.mdx` or `.md` files. Simply edit and rebuild the site.
+
+### Can I add a search feature?
+
+Yes! An instant search is already integrated. For advanced needs, you can integrate solutions like Algolia or Fuse.js.
+
+### Is it possible to monetize my directory?
+
+Absolutely. You can integrate Stripe, Gumroad, affiliate links, or offer sponsored spots.
+
+## 👨‍💻 About the Creator
+
+I’m Guillaume Duhan, CTO & indie builder. I’ve launched many projects using Astro, and this template is the result of several iterations to create SEO-focused web tools.
+
+## 📎 License
+
+This project is licensed under the [MIT](LICENSE).
