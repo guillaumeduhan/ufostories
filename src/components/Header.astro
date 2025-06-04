@@ -1,9 +1,11 @@
 ---
 import DarkMode from './DarkMode.astro';
+import Logo from './Logo.astro';
 ---
 <header class="fixed h-16 flex items-center justify-between w-full z-10 px-4 border-b">
-  <a href="/" class="text-inherit no-underline">
-    <h1 class="mb-0 text-[24px]">Astro SEO Directory Template</h1>
+  <a href="/" class="text-inherit no-underline flex items-center gap-2">
+    <Logo size="h-8" />
+    <h1 class="mb-0 text-[24px]">AstroDirectory.dev</h1>
   </a>
   <nav>
     <DarkMode />

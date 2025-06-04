@@ -2,11 +2,44 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
+
+import { SEO } from "astro-seo";
+
+const {
+  title = "AstroDirectory.dev — A lightning-fast & SEO-optimized template to build directories 2025",
+  description = "A lightning-fast, SEO-optimized Astro + Tailwind template for building directories, job boards, and resource collections. No CMS required.",
+  image = "https://astrodirectory.dev/images/og-image.png", // replace domain
+  url = "https://astrodirectory.dev", // replace domain
+  twitterHandle = "@guillaumeduhan", // replace with yours
+} = Astro.props;
+
+
 ---
 
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} >
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: image,
+        }
+      }}
+      twitter={{
+        creator: "@blackevilgoblin", // use your real Twitter handle
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: image,
+      }}
+    />
   </head>
   <body>
     <Header />
