@@ -2,26 +2,31 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
-
 import { SEO } from "astro-seo";
 
 const {
   title = "AstroDirectory.dev — A lightning-fast & SEO-optimized template to build directories 2025",
   description = "A lightning-fast, SEO-optimized Astro + Tailwind template for building directories, job boards, and resource collections. No CMS required.",
-  image = "https://astrodirectory.dev/images/og-image.png", // replace domain
-  url = "https://astrodirectory.dev", // replace domain
-  twitterHandle = "@guillaumeduhan", // replace with yours
+  image = "https://astrodirectory.dev/images/og-image.png",
+  url = "https://astrodirectory.dev",
+  twitterHandle = "@guillaumeduhan",
+  keywords = "Astro template, directory template, seo template, Astro directory, job board template, resource collection, fast website template, no CMS template, Astro + Tailwind, static site generator, Astro components, best Astro templates 2025"
 } = Astro.props;
-
-
 ---
 
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO enhancements -->
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={url} />
+    <meta name="theme-color" content="#0f172a" /> <!-- Example dark color -->
+
     <SEO
       title={title}
       description={description}
@@ -30,23 +35,39 @@ const {
           title: title,
           type: "website",
           image: image,
+          url: url
         }
       }}
       twitter={{
-        creator: "@blackevilgoblin", // use your real Twitter handle
+        creator: twitterHandle,
         card: "summary_large_image",
         title: title,
         description: description,
         image: image,
       }}
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AstroDirectory.dev",
+        "url": "https://astrodirectory.dev",
+        "description": "A lightning-fast, SEO-optimized Astro + Tailwind template for building directories, job boards, and resource collections.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Guillaume Duhan",
+          "url": "https://astrodirectory.dev"
+        }
+      }
+      </script>
+      
   </head>
   <body>
     <Header />
     <main class="flex pt-16 z-50">
       <Sidebar />
       <section class="lg:pl-64 w-full">
-        <div class="max-w-[860px] mx-auto">
+        <div class="max-w-[760px] mx-auto">
           <slot />
         </div>
       </section>

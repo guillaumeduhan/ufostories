@@ -128,7 +128,7 @@ Absolutely. You can integrate Stripe, Gumroad, affiliate links, or offer sponsor
 
 ## 👨‍💻 About the Creator
 
-I’m Guillaume Duhan, CTO & indie builder. I’ve launched many projects using Astro, and this template is the result of several iterations to create SEO-focused web tools.
+I'm Guillaume Duhan, CTO & indie builder. I've launched many projects using Astro, and this template is the result of several iterations to create SEO-focused web tools.
 
 ## 📎 License
 

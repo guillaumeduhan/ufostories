@@ -18,7 +18,11 @@ const { slug } = Astro.params;
 const { default: Content, frontmatter } = await import(`../content/${slug}.mdx`);
 ---
 
-<Layout>
+<Layout 
+  title={frontmatter.title}
+  description={frontmatter.description}
+  keywords={frontmatter.keywords}
+>
   <article>
     <h1>{frontmatter.title}</h1>
     <Content />
