@@ -47,7 +47,20 @@ const {
       }}
     />
     <!-- Plausible Analytics -->
-    <script defer data-domain="ufostories.wiki" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="ufobase.wiki" src="https://plausible.io/js/script.outbound-links.pageview-props.tagged-events.js"></script>
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3501355801938462"
+     crossorigin="anonymous"></script>
+     <script>
+      declare global {
+        interface Window {
+          adsbygoogle: unknown[];
+        }
+      }
+    
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -68,6 +81,12 @@ const {
     <main class="flex pt-16 z-50">
       <Sidebar />
       <section class="lg:pl-64 w-full">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-3501355801938462"
+          data-ad-slot="TON_SLOT_ID"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
         <div class="max-w-[760px] mx-auto">
           <slot />
         </div>
