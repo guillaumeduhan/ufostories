@@ -71,6 +71,9 @@ article {
   pre {
     @apply my-4 py-4 px-6 rounded-lg overflow-hidden;
   }
+  img {
+    @apply w-full;
+  }
 }
 
 
