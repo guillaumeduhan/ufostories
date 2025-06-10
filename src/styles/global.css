@@ -76,11 +76,14 @@ article {
   }
 }
 
-
 header {
   @apply bg-white dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800;
 }
 
 aside {
   @apply bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800;
+}
+
+.card {
+  @apply grid gap-2 border border-neutral-300 dark:border-neutral-800 rounded p-4;
 }
